@@ -47,7 +47,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
 
-    //core
+    //Activity KTX for viewModels
     implementation "androidx.activity:activity-ktx:$activity_version"
 
     //ViewModel
