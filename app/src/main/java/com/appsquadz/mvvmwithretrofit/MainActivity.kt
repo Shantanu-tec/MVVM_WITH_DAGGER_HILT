@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun observerMenuMaster() {
-        menuMasterViewModel.getMenuMaster().observe(this) { menuMasterList ->
+        menuMasterViewModel.liveMenuMasterData.observe(this) { menuMasterList ->
             menuMasterList?.let {
                 with(binding) {
                     recyclerView.apply {

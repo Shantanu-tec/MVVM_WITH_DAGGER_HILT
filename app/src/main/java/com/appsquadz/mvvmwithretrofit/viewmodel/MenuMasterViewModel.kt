@@ -1,6 +1,7 @@
 package com.appsquadz.mvvmwithretrofit.viewmodel
 
 import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -15,7 +16,8 @@ class MenuMasterViewModel @Inject constructor(private var repository: MenuMaster
 
     private var menuMasterList: MutableLiveData<List<MenuMaster>> = MutableLiveData()
 
-    fun getMenuMaster() = menuMasterList
+    val liveMenuMasterData : LiveData<List<MenuMaster>>
+            get() = menuMasterList
 
     init {
         getMenuMasterData()
@@ -28,7 +30,7 @@ class MenuMasterViewModel @Inject constructor(private var repository: MenuMaster
              when(result.isSuccessful){
                  true ->{
                      Log.e("shantanu", repository.getData().body().toString())
-                     with(result.body()!!.data.orEmpty()){
+                     with(result.body()!!.data){
                          menuMasterList.postValue(this)
                      }
                  }
