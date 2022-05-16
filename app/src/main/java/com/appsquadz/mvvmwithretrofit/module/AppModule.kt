@@ -18,34 +18,6 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    /*@Singleton
-    @Provides
-    fun providesHttpLoggingInterceptor() = HttpLoggingInterceptor()
-        .apply {
-            level = HttpLoggingInterceptor.Level.BODY
-        }
-
-    @Singleton
-    @Provides
-    fun providesOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient =
-        OkHttpClient
-            .Builder()
-            .addInterceptor(httpLoggingInterceptor)
-            .build()
-
-
-            /*if (BuildConfig.DEBUG){
-            val loggingInterceptor =HttpLoggingInterceptor()
-            loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
-            httpClient
-                .addInterceptor(loggingInterceptor)
-                .build()
-        }else{
-            httpClient
-                .build()
-        }*/
-            */
-
     @Singleton
     @Provides
     fun provideOkHttpClient():OkHttpClient {
@@ -55,7 +27,6 @@ class AppModule {
             val request = it.request()
                 .newBuilder()
                 .build()
-
             return@Interceptor it.proceed(request)
         }).connectTimeout(1, TimeUnit.MINUTES)
             .readTimeout(1, TimeUnit.MINUTES)
