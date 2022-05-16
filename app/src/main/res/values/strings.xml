@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MVVM with Retrofit</string>
+    <string name="menu_title">Menu Title</string>
+    <string name="image">image</string>
+</resources>
